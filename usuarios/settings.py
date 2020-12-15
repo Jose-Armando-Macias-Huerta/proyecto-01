@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'applications.users',
     #app terceario
     'rest_framework',
+    'rest_framework.authtoken',
+
 
 ]
 
@@ -130,7 +132,14 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR.child('static')]
 
-######################################################################
-
 AUTH_USER_MODEL = 'users.usuario'
 
+################## Prueba de correo electronico ##################
+
+SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'pruebadecuenta4826@gmail.com' 
+EMAIL_HOST_PASSWORD = 48264826
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
